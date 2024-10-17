@@ -1,0 +1,74 @@
+﻿<Window x:Class="WPF_CONTROLE.C_CADRE"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_CONTROLE"
+        mc:Ignorable="d"
+        Title="C_CADRE" Height="450" Width="828">
+    <Grid HorizontalAlignment="Center" Width="800">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="188"/>
+            <ColumnDefinition Width="203"/>
+            <ColumnDefinition Width="198"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <ListBox x:Name="LSTB_Equipes"
+            ItemsSource="{Binding Ma_Liste_Equipes}"
+            SelectedItem="{Binding Equipe_Selectionnee}"
+            d:ItemsSource="{d:SampleData ItemCount=5}" SelectionChanged="LSTB_Equipes_SelectionChanged" Height="217" VerticalAlignment="Top" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Nom}" Margin="1" ></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox x:Name="LSTB_Sportifs"
+            ItemsSource="{Binding Ma_Liste_Sportifs}"
+            SelectedItem="{Binding Sportif_Selectionnee}"
+            d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="1" SelectionChanged="LSTB_Sportifs_SelectionChanged" Height="217" VerticalAlignment="Top" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Nom}" Margin="1" ></TextBlock>
+                        <TextBlock Text="{Binding NumAdherent}" Margin="1" ></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <ListBox x:Name="LSTB_All_Sportifs" Margin="0,0,8,0"
+     ItemsSource="{Binding Ma_Liste_All_Sportifs}"
+     SelectedItem="{Binding All_Sportif_Selectionnee}"
+     d:ItemsSource="{d:SampleData ItemCount=5}" Grid.Column="3" Height="217" VerticalAlignment="Top" SelectionChanged="LSTB_All_Sportifs_SelectionChanged" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Nom}" Margin="1" ></TextBlock>
+                        <TextBlock Text="{Binding NumAdherent}" Margin="1" ></TextBlock>
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <Button x:Name="BTN_Supprimer_Equipe" Content="Supprimer" HorizontalAlignment="Left" Margin="119,222,0,0" VerticalAlignment="Top" IsEnabled="False" Click="BTN_Supprimer_Equipe_Click"/>
+        <TextBox x:Name="TXTB_Equipe_A_Ajouter" HorizontalAlignment="Left" Margin="10,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" TextChanged="TXTB_Equipe_A_Ajouter_TextChanged"/>
+        <Button x:Name="BTN_Ajoute_Equipe" Content="Ajouter" Margin="10,317,135,0" IsEnabled="False" Click="BTN_Ajoute_Equipe_Click" Height="20" VerticalAlignment="Top"/>
+
+        <Button x:Name="BTN_Desinscrire_Sportif" Content="Desinscrire" HorizontalAlignment="Left" Margin="131,222,0,0" VerticalAlignment="Top" IsEnabled="False" Grid.Column="1" Click="BTN_Desinscrire_Sportif_Click"/>
+
+        <Button x:Name="BTN_Supprime_Sportif" Grid.Column="3" Content="Supprimer" HorizontalAlignment="Left" Margin="133,222,0,0" VerticalAlignment="Top" Width="68" Click="BTN_Supprime_Sportif_Click" IsEnabled="False"/>
+        <TextBox x:Name="TXTB_Nom_Sportif_A_Ajouter" HorizontalAlignment="Left" Margin="10,271,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  Grid.Column="3" TextChanged="TXTB_Nom_Sportif_A_Ajouter_TextChanged"/>
+        <TextBox x:Name="TXTB_Num_Sportif_A_Ajouter" HorizontalAlignment="Left" Margin="10,294,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"  Grid.Column="3" TextChanged="TXTB_Num_Sportif_A_Ajouter_TextChanged"/>
+        <Button x:Name="BTN_Ajoute_Sportif" Content="Ajouter" HorizontalAlignment="Left" Margin="10,317,0,0" VerticalAlignment="Top" IsEnabled="False" Grid.Column="3" Click="BTN_Ajoute_Sportif_Click" />
+        <Button x:Name="BTN_Inscrit_Sportif" Grid.Column="3" Content="Inscrire" HorizontalAlignment="Left" Margin="1,222,0,0" VerticalAlignment="Top" Width="60" Click="BTN_Inscrit_Sportif_Click" IsEnabled="False"/>
+
+        <Label Content="Inscrits : " HorizontalAlignment="Left" Margin="0,222,0,0" VerticalAlignment="Top"/>
+        <TextBlock HorizontalAlignment="Left" Text="{Binding Ma_Liste_Sportifs.Count}" Margin="56,229,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="21" Height="19"/>
+
+
+    </Grid>
+</Window>
